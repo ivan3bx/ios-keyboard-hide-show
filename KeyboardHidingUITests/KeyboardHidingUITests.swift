@@ -9,12 +9,20 @@
 import XCTest
 
 class KeyboardHidingUITests: XCTestCase {
-        
+    var textView:XCUIElement!
+    var tableView:XCUIElement!
+    var textViewOrigin:CGPoint!
+    
     override func setUp() {
         super.setUp()
         continueAfterFailure = false
         XCUIApplication().launch()
         XCUIDevice.sharedDevice().orientation = .Portrait
+
+        let app = XCUIApplication()
+        textView = app.textViews["EntryTextView"]
+        tableView = app.tables["Empty list"]
+        textViewOrigin = textView.frame.origin
     }
     
     override func tearDown() {
@@ -22,11 +30,7 @@ class KeyboardHidingUITests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-        let app = XCUIApplication()
-        let textView = app.textViews["EntryTextView"]
-        let tableView = app.tables["Empty list"]
-        let textViewY = textView.frame.origin.y
+    func testShowAndHide() {
         
         //
         // TextView tap raises the keyboard
@@ -35,7 +39,7 @@ class KeyboardHidingUITests: XCTestCase {
         
         XCTAssertFalse(isKeyboardHidden(),
             "Expected keyboard to be visible")
-        XCTAssertEqualWithAccuracy(textView.frame.origin.y, textViewY - keyboardHeight() - 4, accuracy: 0.1,
+        XCTAssertEqualWithAccuracy(textView.frame.origin.y, textViewOrigin.y - keyboardHeight() - 4, accuracy: 0.1,
             "Expected textView to accomodate visible keyboard height")
 
         //
@@ -46,9 +50,8 @@ class KeyboardHidingUITests: XCTestCase {
         XCTAssertTrue(isKeyboardHidden(),
             "Expected keyboard to be hidden")
 
-        XCTAssertEqualWithAccuracy(textView.frame.origin.y, textViewY, accuracy: 0.1,
+        XCTAssertEqualWithAccuracy(textView.frame.origin.y, textViewOrigin.y, accuracy: 0.1,
             "Expected textView to slide back to origin")
-
     }
     
     private func isKeyboardHidden() -> Bool {
