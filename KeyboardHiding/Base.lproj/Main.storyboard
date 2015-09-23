@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9046" systemVersion="15B17c" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9035"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="KeyboardHiding" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="UCZ-OR-kUE">
+                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
+                                <subviews>
+                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bjN-An-Jhs">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="532"/>
+                                        <animations/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="y4t-04-xgv" appends="YES" id="I8N-gr-P00"/>
+                                            <segue destination="yy1-Uw-Krk" kind="embed" id="g2b-gp-SUb"/>
+                                        </connections>
+                                    </containerView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZLW-0N-QQV" userLabel="entryView">
+                                        <rect key="frame" x="0.0" y="532" width="600" height="48"/>
+                                        <subviews>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="QmF-Op-I8Q">
+                                                <rect key="frame" x="12" y="2" width="576" height="44"/>
+                                                <animations/>
+                                                <accessibility key="accessibilityConfiguration" identifier="EntryTextView"/>
+                                                <string key="text">Some text
+Some other text</string>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            </textView>
+                                        </subviews>
+                                        <animations/>
+                                        <color key="backgroundColor" red="0.94409222290000006" green="0.94409222290000006" blue="0.94409222290000006" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="QmF-Op-I8Q" secondAttribute="bottom" constant="2" id="2qg-Vc-E9u"/>
+                                            <constraint firstItem="QmF-Op-I8Q" firstAttribute="top" secondItem="ZLW-0N-QQV" secondAttribute="top" constant="2" id="Dej-w5-r96"/>
+                                            <constraint firstAttribute="height" constant="48" id="Lei-qk-Iea"/>
+                                            <constraint firstAttribute="trailing" secondItem="QmF-Op-I8Q" secondAttribute="trailing" constant="12" id="MMS-hJ-LTK"/>
+                                            <constraint firstItem="QmF-Op-I8Q" firstAttribute="leading" secondItem="ZLW-0N-QQV" secondAttribute="leading" constant="12" id="RaG-Tc-ZG8"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <animations/>
+                            </stackView>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="UCZ-OR-kUE" secondAttribute="trailing" id="LNL-uU-7Kd"/>
+                            <constraint firstItem="UCZ-OR-kUE" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="Y73-GI-X7v"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="UCZ-OR-kUE" secondAttribute="bottom" id="ZoG-8l-fEv"/>
+                            <constraint firstItem="UCZ-OR-kUE" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="mke-9p-nPb"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="bottomConstraint" destination="ZoG-8l-fEv" id="cpl-U3-tsO"/>
+                        <outlet property="textView" destination="QmF-Op-I8Q" id="NCP-XK-snh"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="y4t-04-xgv">
+                    <connections>
+                        <action selector="dismissKeyboard:" destination="BYZ-38-t0r" id="Opr-um-JNq"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="305" y="429"/>
+        </scene>
+        <!--Table View Controller-->
+        <scene sceneID="hL8-lo-hYf">
+            <objects>
+                <tableViewController id="yy1-Uw-Krk" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="aCf-AV-DPW">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="532"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="ELY-fR-3XI">
+                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ELY-fR-3XI" id="8se-75-tRY">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <animations/>
+                                </tableViewCellContentView>
+                                <animations/>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="yy1-Uw-Krk" id="Szz-WH-AhK"/>
+                            <outlet property="delegate" destination="yy1-Uw-Krk" id="plb-iy-Oe2"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PG3-di-v8N" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="977" y="429"/>
+        </scene>
+    </scenes>
+</document>
