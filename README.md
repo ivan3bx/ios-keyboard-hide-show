@@ -1,17 +1,17 @@
-# Responding to keyboard hide/show events
+## Responding to keyboard hide / show in iOS
 
 There are several ways folks choose to respond to keyboard hide/show notifications,
 some which require more boilerplate code to accomodate interface rotation events.
 This project demonstrates the most straightforward way I know to do this (in Swift).
 
-### How to use this
+#### How to use this
 Check out the code and run the test; it's meant as a playground for exploring additional
 transformations during keyboard show/hide transition.
 
-### The code
+#### The code
 This project doesn't have anything else going on outside of the contents in ViewController.
 
-### The test case
+#### The test case
 I added a UI test (Xcode 7+).  Recording the test is easy, but assertions proved problematic in
 terms of the keyboard display state.
 
